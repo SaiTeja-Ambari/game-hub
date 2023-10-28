@@ -1,15 +1,17 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import { Genre } from "./hooks/useGenre";
+import PlatformSelector from "./components/PlatformSelector";
+import { PlatForm } from "./hooks/usePlatforms";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [selectedGenre, setselectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatForm, setselectedPlatForm] = useState<PlatForm | null>(null);
+
   return (
     <Grid
       templateAreas={{
@@ -33,7 +35,8 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <GameGrid selectedGenre={selectedGenre}></GameGrid>
+        <PlatformSelector selectedPlatform = {selectedPlatForm} onSelectPlatForm={(platform) => setselectedPlatForm(platform)}></PlatformSelector>
+        <GameGrid selectedPlatform = {selectedPlatForm} selectedGenre={selectedGenre}></GameGrid>
       </GridItem>
     </Grid>
   );
