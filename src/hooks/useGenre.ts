@@ -1,4 +1,6 @@
-import useData from "./useData";
+import { useQuery } from "@tanstack/react-query";
+import useData, { fetchedDatas } from "./useData";
+import apiClient from "../services/api-client";
 export interface PlatForm {
   id: number;
   name: string;
@@ -11,8 +13,10 @@ export interface Genre {
 }
 
 
-const useGenre = () => {
-    return useData<Genre>('genres');
-};
+const useGenre = () => useQuery<fetchedDatas<Genre>>({
+    queryKey : ['geners'],
+    queryFn : () => apiClient.get('/genres').then(res => res.data),
+    staleTime : 24*60*60*1000
+});
 
 export default useGenre;
