@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import apiClient, { fetchedDatas } from "../services/api-client";
+import APIClient from "../services/api-client";
 import { CanceledError } from "axios";
 import { Genre } from "./useGenre";
 import { GameQuery } from "../App";
@@ -14,16 +14,21 @@ export interface Game {
   metacritic: number;
 }
 
-const useGames = (gameQuery: GameQuery
-) => {
+const apiClient = new APIClient<Game>("/games");
+const useGames = (gameQuery: GameQuery) => {
   return useQuery({
-    queryKey : ['games', gameQuery],
-    queryFn : () => apiClient.get<fetchedDatas<Game>>('/games', {
-      params: { genres: gameQuery.genre?.id, parent_platforms: gameQuery.platform?.id, ordering : gameQuery.sortOrder, search : gameQuery.searchText } }
-    ).then(res => res.data)
-    
-
-  }) 
+    queryKey: ["games", gameQuery],
+    queryFn: () =>
+      apiClient
+        .getAll({
+          params: {
+            genres: gameQuery.genre?.id,
+            parent_platforms: gameQuery.platform?.id,
+            ordering: gameQuery.sortOrder,
+            search: gameQuery.searchText,
+          },
+        }),
+  });
 };
 
 export default useGames;
