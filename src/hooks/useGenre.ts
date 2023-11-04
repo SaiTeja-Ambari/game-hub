@@ -1,10 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import apiClient, { fetchedDatas } from "../services/api-client";
-export interface PlatForm {
-  id: number;
-  name: string;
-  slug: string;
-}
+
 export interface Genre {
   id: number;
   name: string;
