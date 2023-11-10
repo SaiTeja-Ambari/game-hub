@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import APIClient from "../services/api-client";
 import { CanceledError } from "axios";
 import { Genre } from "./useGenre";
-import { GameQuery } from "../App";
+import { GameQuery } from "../pages/HomePage";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { PlatForm } from "./usePlatforms";
 
