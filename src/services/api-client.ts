@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 export interface fetchedDatas<T> {
   count: number;
-  next : string | null;
+  next: string | null;
   results: T[];
 }
 
@@ -23,6 +23,9 @@ class APIClient<T> {
     return axiosInstance
       .get<fetchedDatas<T>>(this.endpoint, config)
       .then((res) => res.data);
+  };
+  get = (id: string) => {
+    return axiosInstance.get<T>(this.endpoint + '/' + id).then((res) => res.data);
   };
 }
 
