@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import APIClient from "../services/api-client";
 import { CanceledError } from "axios";
-import { Genre } from "../entities/Genre";
+import Genre from "../entities/Genre";
 import { GameQuery } from "../pages/HomePage";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { Game } from "../entities/Game";
+import Game from "../entities/Game";
 
 const apiClient = new APIClient<Game>("/games");
 const useGames = (gameQuery: GameQuery) => {

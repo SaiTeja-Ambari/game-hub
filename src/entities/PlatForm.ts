@@ -1,5 +1,5 @@
 
-export interface PlatForm {
+export default interface PlatForm {
   id: number;
   name: string;
   slug: string;
