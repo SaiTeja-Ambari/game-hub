@@ -5,8 +5,8 @@ import GameHeading from "../components/GameHeading";
 import GenreList from "../components/GenreList";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
-import { Genre } from "../hooks/useGenre";
-import { PlatForm } from "../hooks/usePlatforms";
+import { Genre } from "../entities/Genre";
+import { PlatForm } from "../entities/PlatForm";
 export interface GameQuery {
     genre: Genre | null;
     platform: PlatForm | null;
